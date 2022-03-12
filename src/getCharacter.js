@@ -68,4 +68,7 @@ const getCharacter = (name) => {
   return undefined;
 };
 
+const verificaCase = getCharacter('Arya');
+console.log(verificaCase);
+
 module.exports = getCharacter;

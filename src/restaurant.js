@@ -75,10 +75,23 @@
 
 //------------------------------------------------------------------------------------------
 
-// PASSO 4: adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função
-// que percorre por todos os itens de `objetoRetornado.consumption`, soma o preço deles e retorna o valor somado acrescido de 10%.
-// DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
+// // PASSO 4: adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função
+// // que percorre por todos os itens de `objetoRetornado.consumption`, soma o preço deles e retorna o valor somado acrescido de 10%.
+// // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+// const createMenu = () => {
+//   return {
+//     fetchMenu: () => {}
+//   }
+// };
 
-module.exports = createMenu;
+// // const meuRestaurante = createMenu()
+// console.log(createMenu());
+// module.exports = createMenu;
+
+// // return {
+//   fetchMenu: () => objeto,
+//   consumption: Object.keys(objeto),
+//   order: (string) => meuRestaurante.consumption.push(string),
+//   pay: () => 
+// }
