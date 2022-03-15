@@ -27,16 +27,16 @@
   meuRestaurante.pay() // Retorno: 3.9
 
   Uma função createMenu retorna um objeto com as seguintes características:
-  - Uma chave `fetchMenu` retorna o objeto que a função `createMenu` recebe por parâmetro. O menu tem sempre duas chaves, `food` e `drink`, no seguinte formato:
+//   - Uma chave `fetchMenu` retorna o objeto que a função `createMenu` recebe por parâmetro. O menu tem sempre duas chaves, `food` e `drink`, no seguinte formato:
+// // 
+//  const meuRestaurante = createMenu({
+//     food: {'coxinha': 3.90, 'sanduiche', 9.90},
+//     drinks: {'agua': 3.90, 'cerveja': 6.90}
+//   });
 
-  const meuRestaurante = createMenu({
-    food: {'coxinha': 3.90, 'sanduiche', 9.90},
-    drinks: {'agua': 3.90, 'cerveja': 6.90}
-  });
+//   meuRestaurante.fetchMenu() // Retorno: Menu acima
 
-  meuRestaurante.fetchMenu() // Retorno: Menu acima
-
-  - Uma chave `consumption` que contém um array de strings, com cada string sendo a chave de um pedido. Por exemplo: ['coxinha', 'cerveja']
+//   - Uma chave `consumption` que contém um array de strings, com cada string sendo a chave de um pedido. Por exemplo: ['coxinha', 'cerveja']
 
   - Uma chave `order` que tem uma função que, recebida uma string como parâmetro, adiciona essa string à lista salva em `consumption`.
 
@@ -79,19 +79,81 @@
 // // que percorre por todos os itens de `objetoRetornado.consumption`, soma o preço deles e retorna o valor somado acrescido de 10%.
 // // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-// const createMenu = () => {
-//   return {
-//     fetchMenu: () => {}
+let restaurant = {};
+const orderFromMenu = (request) => restaurant.consumption.push(request);
+
+// const somaFood = () => {
+//   const menuFood = Object.keys(restaurant.fetchMenu().food);
+//   const valorFood = Object.values(restaurant.fetchMenu().food);
+//   let valoresMenu = 0;
+//   for (let i = 0; i < menuFood.length; i += 1) {
+//     for (let i2 = 0; i2 < restaurant.consumption.length; i2 += 1) {
+//       if (menuFood[i] === restaurant.consumption[i2]) {
+//         valoresMenu += valorFood[i] * 1.1;
+//       }
+//     }
 //   }
+//   return valoresMenu;
 // };
 
-// // const meuRestaurante = createMenu()
-// console.log(createMenu());
-// module.exports = createMenu;
+// const somaDrink = () => {
+//   const menuDrinks = Object.keys(restaurant.fetchMenu().drinks);
+//   const valorDrinks = Object.values(restaurant.fetchMenu().drinks);
+//   let valoresMenu = 0;
+//   for (let i = 0; i < menuFood.length; i += 1) {
+//     for (let i2 = 0; i2 < restaurant.consumption.length; i2 += 1) {
+//       if (menuDrinks[i] === restaurant.consumption[i2]) {
+//         valoresMenu += valorDrinks[i] * 1.1;
+//       }
+//     }
+//   }
+//   return valoresMenu;
+// };
 
-// // return {
-//   fetchMenu: () => objeto,
-//   consumption: Object.keys(objeto),
-//   order: (string) => meuRestaurante.consumption.push(string),
-//   pay: () => 
-// }
+// const somaValores = () => {
+//   const valorTotal =  somaFood() + somaDrink();
+//   return valorTotal;
+// };
+
+const somaValores = () => {
+  const menuFood = Object.keys(restaurant.fetchMenu().food);
+  const menuDrinks = Object.keys(restaurant.fetchMenu().drinks);
+  const valorFood = Object.values(restaurant.fetchMenu().food);
+  const valorDrinks = Object.values(restaurant.fetchMenu().drinks);
+  let valoresMenu = 0;
+  for (let i = 0; i < menuFood.length; i += 1) {
+    for (let i2 = 0; i2 < restaurant.consumption.length; i2 += 1) {
+      if (menuFood[i] === restaurant.consumption[i2]) {
+        valoresMenu += valorFood[i] * 1.1;
+      } else if (menuDrinks[i] === restaurant.consumption[i2]) {
+        valoresMenu += valorDrinks[i] * 1.1;
+      }
+    }
+  }
+  return valoresMenu;
+};
+
+const createMenu = (object) => {
+  restaurant = {
+    fetchMenu: () => object,
+    consumption: [],
+    order: (pedido) => orderFromMenu(pedido),
+    pay: () => somaValores(),
+  };
+  return restaurant;
+};
+
+module.exports = createMenu;
+
+// const objetoRetornado = createMenu({
+//   food: {'coxinha': 3.90, 'sanduiche': 9.90},
+//   drinks: {'agua': 3.90, 'cerveja': 6.90}
+// });
+// objetoRetornado.order('coxinha')
+// objetoRetornado.order('agua');
+// objetoRetornado.order('sanduiche');
+// objetoRetornado.order('cerveja');
+// objetoRetornado.order('coxinha');
+// objetoRetornado.order('agua');
+
+// console.log(objetoRetornado.pay());
