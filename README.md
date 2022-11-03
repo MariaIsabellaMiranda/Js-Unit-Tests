@@ -1,9 +1,5 @@
 # Js Unit Tests
 
-![Captura de tela de 2022-11-02 17-39-27](https://user-images.githubusercontent.com/96309515/199598097-734c2820-d63b-4313-a4a7-4582b8b9bc9c.png)
-
-# Sobre
-
 <p>Neste projeto foram implementados testes unitários para várias funções, utilizando o módulo Jest do NodeJS para verificar o correto funcionamento dessas funções.<br>
 Para escrever os testes e funções utilizei uma abordagem de desenvolvimento orientado a testes.<p>
 
